@@ -35,7 +35,6 @@ public class OperationsController {
 
     @PostMapping()
     public OperationsDTO addOperation(@RequestBody Operation operation){
-        statementService.saveOperation(operation);
         asyncInputOperationService.addOperation(operation);
         return new OperationsDTO(operation.getOperationId(),operation.getSum(), operation.getCurrency(), operation.getMerchant(), operation.getOperationCreditType());
     }

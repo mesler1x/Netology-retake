@@ -22,9 +22,7 @@ public class Operation extends BaseOperation implements ConsolePrintable {
     private int customerId;
     private int operationId;
 
-    public Operation(){
 
-    }
 
     public void printToConsole(){
         System.out.println(this);

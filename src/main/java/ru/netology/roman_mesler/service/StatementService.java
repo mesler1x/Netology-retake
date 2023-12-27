@@ -55,11 +55,19 @@ public class StatementService {
         return storage.get(customerId);
     }
     public void removeOperationsOnCustomerId(int customerId, int operationId){
-        List<Operation> allUserOperationsById = storage.get(customerId);
-        for(Operation operation: allUserOperationsById){
-            if (operation.getOperationId() == operationId){
-                storage.get(customerId).remove(operationId - 1);
+        if (storage.containsKey(customerId)){
+            List<Operation> allUserOperationsById = storage.get(customerId);
+            if (allUserOperationsById != null){
+                for(Operation operation: allUserOperationsById){
+                    if (operation.getOperationId() == operationId){
+                        allUserOperationsById.remove(operation);
+                    }
+                }
+            } else {
+                System.out.println("No operation by this id from this user");
             }
+        } else {
+            System.out.println("No customer found with this id");
         }
     }
 }

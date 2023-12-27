@@ -29,7 +29,12 @@ public class CustomerService {
     }
 
     public Customer getCustomer(int customerId) {
-        return storage.get(customerId);
+        for (Customer customer: storage){
+            if (customer.getId() == customerId){
+                return customer;
+            }
+        }
+        return null;
     }
 
 }
